@@ -1,0 +1,3 @@
+COQDEP VFILES
+COQC src/RFJ/Lemmas/BasicLemmas/LemmasFJSubstitution.v
+COQC src/RFJ/Lemmas/BasicLemmas/LemmasWFSubstitution.v
