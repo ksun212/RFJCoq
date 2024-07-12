@@ -19,38 +19,6 @@ Require Import RFJ.Tactics.
 
 Require Import Lia.
 
-Definition good:= (forall x:nat, x=x+1 -> x = x+2).
-
-Theorem gt:good.
-Proof.
-  unfold good.
-  intros.
-  induction x.
-  simpl in H. discriminate.
-  simpl in H. inversion H. apply IHx in H1.
-  simpl. rewrite H1 at 1. lia.
-Qed.
-
-Inductive Good: nat -> Prop:= 
-| G1: forall (n m:nat), n=n+1 -> Good m.
-
-Theorem gt2: Good 1 -> False.
-Proof.
-  intros. inversion H.
-Admitted.
-Parameter p: nat -> Prop.
-Parameter q: nat -> Prop.
-Theorem gt3: (forall (n m: nat), p n -> q m ) -> (forall (m: nat), (exists (n:nat), p n) -> q m ).
-Proof.
-  intros. destruct H0 as [n].
-  apply H with n m in H0.
-  auto.
-Qed.
-Theorem gt4: (forall (m: nat), (exists (n:nat), p n) -> q m ) -> (forall (n m: nat), p n -> q m ).
-Proof.
-  intros.
-  apply H. exists n. auto.
-Qed.
 
 (*
 1. we use contra and co variant. 
